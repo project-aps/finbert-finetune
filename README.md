@@ -1,45 +1,20 @@
-<<<<<<< HEAD
-# finbert-finetune
-=======
----
-license: apache-2.0
-datasets:
-    - FinGPT/fingpt-sentiment-train
-language:
-    - en
-metrics:
-    - accuracy
-    - f1
-    - recall
-    - precision
-base_model:
-    - ProsusAI/finbert
-pipeline_tag: text-classification
-tags:
-    - finance
-    - financial
-    - news
-    - sentiment-analysis
-    - finbert
-    - transfomer
-    - text-classification
-    - financial-news
-    - financial-news-sentiment
-library_name: transformers
----
-
 # FinBERT Fine-Tuned on Financial News/Texts
 
 A fine-tuned version of [`ProsusAI/finbert`](https://huggingface.co/ProsusAI/finbert) trained for **financial sentiment analysis** on financial news texts and headlines.
 This fine-tuned model achieves a significant improvement over the original finbert, **outperforming it by over 38% in accuracy** on financial sentiment classification tasks.
 
----
+### **Model available on Hugging Face**: [project-aps/finbert-finetune](https://huggingface.co/project-aps/finbert-finetune)
+
+## Repository Contents
+
+| File                                                                                                             | Description                                                |
+| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| [`finbert-finetuning.ipynb`](https://github.com/project-aps/finbert-finetune/blob/main/finbert-finetuning.ipynb) | Jupyter notebook for training / fine-tuning FinBERT.       |
+| [`finbert-inference.ipynb`](https://github.com/project-aps/finbert-finetune/blob/main/finbert-inference.ipynb)   | Notebook for running inference using the fine-tuned model. |
 
 ## Model Objective
 
 The goal of this model is to detect **positive**, **neutral**, or **negative sentiment** on financial texts and headlines.
-
----
 
 ## Training Dataset
 
@@ -48,8 +23,6 @@ The goal of this model is to detect **positive**, **neutral**, or **negative sen
 -   Labeled financial text samples (positive / neutral / negative)
 -   Includes earnings statements, market commentary, and financial news headlines
 -   Only included **neutral**, **positive** and **negative** texts.
-
----
 
 ## Benchmark Evaluation
 
@@ -81,9 +54,7 @@ We benchmarked this model against the original [`ProsusAI/finbert`](https://hugg
 
 > **Note:** All metrics represent classification performance improvements after fine-tuning FinBERT on respective financial sentiment datasets. Metrics in parentheses represent relative improvement over base FinBERT performance.
 
----
-
-## 🧠 Text-Level Comparison: FinBERT vs FinBERT-Finetuned (Ours)
+## Text-Level Comparison: FinBERT vs FinBERT-Finetuned (Ours)
 
 ### FinBERT Failed Texts (as per discussed in its [`Paper`](https://arxiv.org/abs/1908.10063)) (Correctly Predicted by Ours)
 
@@ -101,7 +72,7 @@ We benchmarked this model against the original [`ProsusAI/finbert`](https://hugg
 | Earnings smashed expectations $AAPL posts $0.89 EPS vs $0.78 est. Bullish momentum incoming!    | Positive | ❌ Neutral (0.4237)  | ✅ Positive (0.9998) |
 | $TSLA growth is slowing — but hey, at least Elon tweeted something funny today. #Tesla #markets | Negative | ❌ Neutral (0.5884)  | ✅ Negative (0.7084) |
 
-### ⚪ Out-of-Context Texts (FinBERT Misclassified, Ours Handled Properly)
+### Out-of-Context Texts (FinBERT Misclassified, Ours Handled Properly)
 
 | Text                                                           | Expected | FinBERT              | Ours                |
 | -------------------------------------------------------------- | -------- | -------------------- | ------------------- |
@@ -109,8 +80,6 @@ We benchmarked this model against the original [`ProsusAI/finbert`](https://hugg
 | Virtual Reality Therapy Shows Promise for Treating PTSD        | Neutral  | ❌ Positive (0.8522) | ✅ Neutral (0.9997) |
 
 > **Note**: These examples demonstrate improvements in real-world understanding, context handling, and sentiment differentiation with our FinBERT-finetuned model. Values in parentheses (e.g., `0.9485`) indicate the model’s confidence score for its predicted sentiment.
-
----
 
 ## Limitations & Failure Cases
 
@@ -129,8 +98,6 @@ While the model outperformed the base FinBERT across benchmarks, **some failure 
 
 This suggests that **explicit numerical comparison reasoning** still remains challenging without targeted pretraining or numerical reasoning augmentation.
 
----
-
 ## Hyperparameters
 
 During fine-tuning, the following hyperparameters were used to optimize model performance:
@@ -145,15 +112,11 @@ During fine-tuning, the following hyperparameters were used to optimize model pe
 
 > **Note**: These settings were chosen to balance training efficiency and accuracy for financial news sentiment classification.
 
----
-
 ## Summary
 
 ✅ **Better generalization** than FinBERT on both benchmark and noisy real-world samples  
 ✅ **Strong accuracy and F1 scores**  
 ⚠️ Room to improve on **numerical reasoning comparisons** — potential for integration with numerical-aware transformers or contrastive fine-tuning
-
----
 
 ## Usage
 
@@ -200,8 +163,6 @@ print(f"Sentiment: {label_map[predicted_class]}")
 
 ```
 
----
-
 ## Acknowledgements
 
 We gratefully acknowledge the creators and maintainers of the resources used in this project:
@@ -214,5 +175,17 @@ We gratefully acknowledge the creators and maintainers of the resources used in 
 
 We thank these contributors for making their models and datasets publicly available, enabling high-quality research and development in financial NLP.
 
----
->>>>>>> d9d0684 (Added all files)
+## Contact
+
+If you have questions, suggestions, or would like to contribute to this project, feel free to get in touch:
+
+-   🐛 **Report bugs** or request features by opening an [issue](https://github.com/project-aps/finbert-finetune/issues)
+-   📦 **Contribute code** via [pull requests](https://github.com/project-aps/finbert-finetune/pulls)
+-   💬 **General questions** or discussions are welcome on the [Hugging Face model page](https://huggingface.co/project-aps/finbert-finetune)
+
+We welcome feedback and collaboration from the open-source and finance NLP communities!
+
+## 📄 License
+
+This project is licensed under the **Apache 2.0 License**.  
+See the [LICENSE](./LICENSE) file for full details.
